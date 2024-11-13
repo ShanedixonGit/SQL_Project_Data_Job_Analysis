@@ -6,7 +6,7 @@ FROM
 job_postings_fact 
 LIMIT 10;
 
--- By selecting randomly we can create a string
+-- By selecting followed by a date we can create a string
 
 SELECT '2023-02-19';
 
@@ -39,6 +39,8 @@ LIMIT 5;
 3. Find companies which have posted jobs offering health insurance and filter by the 2nd quarter of the year.
 */
 
+-- 1
+
 SELECT
     job_schedule_type,
     AVG(salary_year_avg),
@@ -58,6 +60,8 @@ GROUP BY
 ORDER BY 
     job_posted_month;
 
+-- 2
+
 SELECT 
     B.name,
     A.job_health_insurance,
@@ -69,6 +73,8 @@ ON A.company_id = B.company_id
 WHERE job_health_insurance = TRUE
 AND EXTRACT(QUARTER FROM A.job_posted_date) = 2
 ORDER BY B.name ASC;
+
+-- 3
 
 SELECT 
     B.name,
