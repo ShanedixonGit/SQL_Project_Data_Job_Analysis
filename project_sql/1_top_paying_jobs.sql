@@ -13,7 +13,8 @@ SELECT
     salary_year_avg,
     job_posted_date,
     name AS "company_name"
-FROM job_postings_fact a
+FROM 
+    job_postings_fact a
 LEFT JOIN company_dim b ON a.company_id = b.company_id
 WHERE job_location LIKE '%Anywhere%'
     AND salary_year_avg IS NOT NULL
